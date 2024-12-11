@@ -1,4 +1,17 @@
-#logo 
+nav 
 {
-    background-image: url('assets/img/logotipo.png');
+    position: fixed;
+    height: 64px;
+}
+
+#nav-logo
+{
+    height: 114px;
+    width: 114px;
+}
+
+#navbarNav
+{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: medium;
 }
