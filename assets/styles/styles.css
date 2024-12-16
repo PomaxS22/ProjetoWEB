@@ -1,17 +1,18 @@
 nav 
 {
     position: fixed;
-    height: 64px;
+    height: 68px;
 }
 
 #nav-logo
 {
-    height: 166px;
-    width: 67px;
+    height: 67px;
+    width: 166px;
+
 }
 
 #navbarNav
 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: medium;
+    font-size: 16px;
 }
+
