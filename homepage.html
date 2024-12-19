@@ -9,7 +9,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-
     </head>
     <body>
 
@@ -42,59 +41,72 @@
     </nav>
     <!--FIM NAVBAR-->
 
-    <!--CARROSSEL
-    <div id="myCarousel" class="carousel slide bg-secondary">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="row">
-                <div class="col-8">
-                    <div class="carousel-caption">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <img src="assets/img/carrossel2.png" class="img-fluid ">
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    FIM CARROSEL-->
+<!--INICIO CAROSSEL-->
 
-        <div id="carouselExample" class="carousel slide bg-body-tertiary">
-      
-          <div class="carousel-inner row">
-            <div class="col-md-8 justify-content-center">  
-              <span class="text-start">Teste</span>
+<!-- Carousel -->
+<div id="hero-carousel" class="carousel slide">
+  <div class="carousel-inner">
+    <!-- Japan Slide -->
+    <div class="carousel-item active bg-gray">
+      <div class="carousel-content">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <h1 class="display-2 fw-bold mb-4">Descobre o Japão</h1>
+              <p class="lead mb-3">Faz uma viagem pelos destinos mais deslumbrantes do mundo. Das ruas vibrantes de Nova Iorque às antigas ruínas de Roma, cada imagem revela um lugar à espera de ser explorado.</p>
+              <p class="mb-4">Quer seja para aventura, relaxamento ou descoberta, encontra o teu próximo destino connosco.</p>
+              <button class="btn btn-outline-primary px-4">Explorar</button>
             </div>
-            <div class="carousel-item active col-md-4">
-              <img src="assets/img/carrossel2.png" class="img-fluid">
+            <div class="col-lg-6">
+              <img src="assets/img/japan.png" class="img-fluid" alt="Japan Temple">
             </div>
-            <div class="carousel-item col-4">
-              <img src="assets/img/carrossel2.png" class="img-fluid ">
-            </div>  
           </div>
-        <button class="carousel-control-prev bg-dark" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next bg-dark" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Proximo</span>
-        </button>
+        </div>
       </div>
+    </div>
+
+    <!-- Australia Slide -->
+    <div class="carousel-item bg-black">
+      <div class="carousel-content">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <h1 class="display-2 fw-bold text-white mb-4">Descobre a Austrália</h1>
+              <p class="lead text-white mb-3">Descobre o vibrante Grande Barreira de Coral, a famosa Ópera de Sydney e o vasto Outback.</p>
+              <p class="text-white mb-4">A Austrália oferece uma vida selvagem única, costas emocionantes e paisagens diversificadas.</p>
+              <button class="btn btn-outline-light px-4">Explorar</button>
+            </div>
+            <div class="col-lg-6">
+              <img src="assets/img/australia.png" class="img-fluid" alt="Sydney Opera House">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+    <div class="nav-circle">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </div>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+    <div class="nav-circle">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </div>
+    <span class="visually-hidden">Next</span>
+  </button>
+
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+  </div>
+</div>
+
+<!--FIM CAROSSEL-->
 
     
 
@@ -127,12 +139,16 @@
         </div>
       </div>
     </div>
-    
-      
     <!--FIM CARDS-->
     
 
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <!--JQUERY-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!--JQUERY-->
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
 
   
