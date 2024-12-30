@@ -35,7 +35,7 @@ nav
 .tituloCards
 {
     font-size: 56px;
-    font: bold;
+    font-style: bold;
 }
 
 /*CSS CARROUSEL*/
@@ -102,6 +102,7 @@ nav
     background-color: #fff;
   }
   
+
   .btn {
     border-radius: 0;
     border-width: 1px;
@@ -125,3 +126,7 @@ nav
       font-size: 2.5rem;
     }
   }
+
+#retanguloCardsInfo{
+  border: #000;
+}
