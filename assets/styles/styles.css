@@ -130,3 +130,21 @@ nav
 #retanguloCardsInfo{
   border: #000;
 }
+
+#footer{
+  background-color: #D9D9D9;
+}
+
+#logo-footer{
+  width: 230px;
+  height: 93px;
+}
+
+#text-footer{
+  font-size: 16px;
+}
+
+#text-footer a:hover
+{
+    color:blue;
+}
