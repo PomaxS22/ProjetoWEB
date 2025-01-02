@@ -156,3 +156,32 @@ nav
 #retanguloCardsInfo {
   padding: 15px;
 }
+
+#myBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  padding: 15px;
+  border: none;
+  outline: none;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  /* Initial state */
+  opacity: 0;
+  visibility: hidden;
+  /* Smooth transition for opacity and visibility */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#myBtn:hover {
+  background-color: #333;
+}
+
+/* Class to show the button */
+#myBtn.visible {
+  opacity: 1;
+  visibility: visible;
+}

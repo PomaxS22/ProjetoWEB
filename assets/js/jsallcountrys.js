@@ -1,5 +1,13 @@
 const API_URL = 'https://restcountries.com/v3.1/all';
 
+//Funcão para definir como as Currencys aparecem
+function formatCurrencies(currencies) {
+    if (!currencies) return 'N/A';
+    return Object.values(currencies)
+        .map(currency => `${currency.name}`)
+        .join(', ');
+}
+
 $(document).ready(function() {
     let allCountries = []; // Armazena todos os paises
 
@@ -20,14 +28,13 @@ $(document).ready(function() {
                             <p class="card-text">
                                 <strong>Capital:</strong> ${country.capital ? country.capital[0] : 'N/A'}<br>
                                 <strong>Continente:</strong> ${country.region}<br>
-                                <strong>População:</strong> ${country.population.toLocaleString()}
+                                <strong>Sub-região:</strong> ${country.subregion}<br>
+                                <strong>População:</strong> ${country.population.toLocaleString()}<br>
+                                <strong>Moeda:</strong> ${formatCurrencies(country.currencies)}<br>
                             </p>
-                            <div class="text-center">
-                                <a href="#" class="btn btn-primary">Mais Informação</a>
-                            </div>
                         </div>
                     </div>
-                </div>
+                </div
             `;
             $countryList.append(card);
         });
@@ -69,4 +76,24 @@ $(document).ready(function() {
     loadCountries();
 });
 
-document.addEventListener('DOMContentLoaded', listAllCountries);
+
+let myBtn = document.getElementById("myBtn");
+
+// When user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    myBtn.classList.add("visible");
+  } else {
+    myBtn.classList.remove("visible");
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  // Smooth scroll to top
+  window.scrollTo({
+    top: 0
+  });
+}
