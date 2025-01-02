@@ -26,12 +26,6 @@ nav
 }
 
 
-.card 
-{
-    background-color: red;
-}
-
-
 .tituloCards
 {
     font-size: 56px;
@@ -150,3 +144,8 @@ nav
     color:blue;
 }
 
+#footer-logo{
+  
+  height: 67px;
+  width: 166px;
+}
