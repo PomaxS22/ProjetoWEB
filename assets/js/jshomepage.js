@@ -22,7 +22,7 @@ function getRandomCountries() {
                 
                 cardBody.innerHTML = `
                     <h5 class="card-title text-center">${country.name.common}</h5>
-                    <a href="#" class="btn btn-primary d-flex justify-content-center">Mais Informações</a>
+                    <a href="listapaises.html" class="btn btn-primary d-flex justify-content-center">Mais Informações</a>
                 `;
             });
         })

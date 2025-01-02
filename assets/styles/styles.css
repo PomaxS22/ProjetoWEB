@@ -101,7 +101,6 @@ nav
     border-radius: 0;
     border-width: 1px;
     padding: 0.5rem 2rem;
-    text-transform: uppercase;
     font-weight: 500;
   }
   
@@ -148,4 +147,12 @@ nav
   
   height: 67px;
   width: 166px;
+}
+
+#retanguloCardsInfo:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#retanguloCardsInfo {
+  padding: 15px;
 }
