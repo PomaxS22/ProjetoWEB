@@ -93,19 +93,18 @@ $(document).ready(function() {
     displayFavoriteCountries();
 });
 
+
 // Add the scroll-to-top functionality
 let myBtn = document.getElementById("myBtn");
 
 window.onscroll = function() {scrollFunction()};
-
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
         myBtn.classList.add("visible");
     } else {
-        myBtn.classList.remove("visible");
+        myBtn.classList.remove("visible");  
     }
 }
-
 function topFunction() {
     window.scrollTo({
         top: 0,
