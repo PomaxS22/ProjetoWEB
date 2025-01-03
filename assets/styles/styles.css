@@ -151,6 +151,9 @@ nav
 
 #retanguloCardsInfo:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+  
 }
 
 #retanguloCardsInfo {
@@ -167,12 +170,10 @@ nav
   outline: none;
   background-color: #555;
   color: white;
-  cursor: pointer;
+  cursor: pointer; 
   border-radius: 4px;
-  /* Initial state */
   opacity: 0;
   visibility: hidden;
-  /* Smooth transition for opacity and visibility */
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
@@ -180,8 +181,38 @@ nav
   background-color: #333;
 }
 
-/* Class to show the button */
 #myBtn.visible {
   opacity: 1;
   visibility: visible;
+}
+
+.social-icon img {
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover img {
+  transform: scale(1.2);
+}
+
+.favorite-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+}
+
+.favorite-btn i {
+  color: #dc3545;
+}
+
+.favorite-btn:hover {
+  background-color: #e9ecef;
+}
+
+.card-footer {
+  padding: 0.75rem;
 }
