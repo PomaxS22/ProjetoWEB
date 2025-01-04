@@ -1,113 +1,119 @@
 const API_URL = 'https://restcountries.com/v3.1/all';
 
-function formatCurrencies(currencies) {
-    if (!currencies) return 'N/A';
+// Formata a "currency" para aparecer corretamente
+function formatarMoedas(currencies) {
+    if (!currencies) return "N/A";
     return Object.values(currencies)
-        .map(currency => `${currency.name}`)
-        .join(', ');
-}
+      .map((currency) => `${currency.name}`)
+      .join(", ");
+  }
+  
 
-function getFavorites() {
+// Obtém a lista de países favoritos do localStorage se estiver vazio retorna um array vazio
+function obterFavoritos() {
     return JSON.parse(localStorage.getItem('favoriteCountries')) || [];
 }
 
-function saveFavorites(favorites) {
+// Salva a lista de países favoritos no localStorage
+function salvarFavoritos(favorites) {
     localStorage.setItem('favoriteCountries', JSON.stringify(favorites));
 }
 
-function toggleFavorite(countryName) {
-    let favorites = getFavorites();
-    const index = favorites.indexOf(countryName);
+// Adiciona ou remove um país da lista de favoritos
+function alternarFavorito(countryName) {
+    let favoritos = obterFavoritos();
+    const index = favoritos.indexOf(countryName);
     
     if (index === -1) {
-        favorites.push(countryName);
+        favoritos.push(countryName);
     } else {
-        favorites.splice(index, 1);
+        favoritos.splice(index, 1);
     }
     
-    saveFavorites(favorites);
-    displayFavoriteCountries(); // Refresh the display after toggling
+    salvarFavoritos(favoritos);
+    exibirPaisesFavoritos(); // Atualiza a exibição após a alteração
 }
 
-function displayFavoriteCountries() {
-    const favorites = getFavorites();
-    const $favoritesList = $('#favoritesList');
-    const $noFavorites = $('#noFavorites');
+// Funcao que mostra os paises
+function exibirPaisesFavoritos() {
+    const favoritos = obterFavoritos();
+    const $listaFavoritos = $('#favoritesList');
+    const $semFavoritos = $('#noFavorites');
     
-    if (favorites.length === 0) {
-        $favoritesList.hide();
-        $noFavorites.removeClass('d-none');
+    // Se não há favoritos, e mostra botao para ver todos os paises "Class d-none no HTML"
+    if (favoritos.length === 0) {
+        $listaFavoritos.hide();
+        $semFavoritos.removeClass('d-none');
         return;
     }
     
-    $favoritesList.empty();
-    $noFavorites.addClass('d-none');
-    $favoritesList.show();
+    // Limpa a lista atual e prepara para mostrar os favoritos
+    $listaFavoritos.empty();
+    $semFavoritos.addClass('d-none');
+    $listaFavoritos.show();
 
+    // Busca os dados de todos os países e filtra os favoritos
     $.ajax({
         url: API_URL,
         method: 'GET',
-        success: function(allCountries) {
-            const favoriteCountries = allCountries.filter(country => 
-                favorites.includes(country.name.common)
+        success: function(todosPaises) {
+            // Filtra os países favoritos
+            const paisesFavoritos = todosPaises.filter(pais => 
+                favoritos.includes(pais.name.common)
             );
 
-            favoriteCountries.forEach(country => {
+            // Card de cada pais favorito
+            paisesFavoritos.forEach(pais => {
                 const card = `
                     <div class="col-md-4 mb-4 country-card">
                         <div class="card h-100">
-                            <img src="${country.flags.png}" 
+                            <img src="${pais.flags.png}" 
                                  class="card-img-top" 
-                                 alt="Flag of ${country.name.common}"
+                                 alt="Bandeira de ${pais.name.common}"
                                  style="height: 200px; object-fit: cover;">
                             <div class="card-body">
-                                <h5 class="card-title text-center">${country.name.common}</h5>
+                                <h5 class="card-title text-center">${pais.name.common}</h5>
                                 <p class="card-text">
-                                    <strong>Capital:</strong> ${country.capital ? country.capital[0] : 'N/A'}<br>
-                                    <strong>Continente:</strong> ${country.region}<br>
-                                    <strong>Sub-região:</strong> ${country.subregion}<br>
-                                    <strong>População:</strong> ${country.population.toLocaleString()}<br>
-                                    <strong>Moeda:</strong> ${formatCurrencies(country.currencies)}<br>
+                                    <strong>Capital:</strong> ${pais.capital ? pais.capital[0] : 'N/A'}<br>
+                                    <strong>Continente:</strong> ${pais.region}<br>
+                                    <strong>Sub-região:</strong> ${pais.subregion}<br>
+                                    <strong>População:</strong> ${pais.population.toLocaleString()}<br>
+                                    <strong>Moeda:</strong> ${formatarMoedas(pais.currencies)}<br>
                                 </p>
                             </div>
                             <div class="card-footer bg-transparent border-0 d-flex justify-content-end">
                                 <button class="favorite-btn btn btn-light rounded-circle"
-                                        onclick="toggleFavorite('${country.name.common.replace(/'/g, "\\'")}')">
+                                        onclick="alternarFavorito('${pais.name.common.replace(/'/g, "\\'")}')">
                                     <i class="fas fa-heart"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
                 `;
-                $favoritesList.append(card);
+                $listaFavoritos.append(card);
             });
         },
-        error: function(error) {
-            console.error('Error:', error);
-            $favoritesList.html('<p class="text-center">Erro ao carregar países favoritos.</p>');
+        error: function(erro) {
+            console.error('Erro:', erro);
+            $listaFavoritos.html('<p class="text-center">Erro ao carregar países favoritos.</p>');
         }
     });
 }
 
-$(document).ready(function() {
-    displayFavoriteCountries();
-});
+// Vai buscar o botao ao HTML
+let meuBotao = document.getElementById("myBtn");
 
-
-// Add the scroll-to-top functionality
-let myBtn = document.getElementById("myBtn");
-
+// Mostra o botao de scroll quando se desce 20px para baixo da parte superior da pagina 
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        myBtn.classList.add("visible");
+        meuBotao.classList.add("visible");
     } else {
-        myBtn.classList.remove("visible");  
+        meuBotao.classList.remove("visible");  
     }
 }
-function topFunction() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
+
+// Mostra os paises favoritos quando a pagina carrega
+$(document).ready(function() {
+    exibirPaisesFavoritos();
+});
