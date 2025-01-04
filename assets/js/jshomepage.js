@@ -1,7 +1,6 @@
-// URL da API que fornece dados de todos os países
 const API_URL = 'https://restcountries.com/v3.1/all';
 
-// Função que busca e exibe 3 países aleatórios na página inicial
+// Busca e exibe 3 países aleatórios na página inicial
 function obterPaisesAleatorios() {
     // Busca todos os países da API
     fetch(API_URL)
@@ -34,8 +33,7 @@ function obterPaisesAleatorios() {
                 `;
             });
         })
-        .catch(erro => console.error('Erro', erro));
+        .catch(erro => console.error('Algo está errado', erro));
 }
 
-// Carrega os países aleatórios quando a página é carregada
 document.addEventListener('DOMContentLoaded', obterPaisesAleatorios);

@@ -1,166 +1,148 @@
-body 
-{
-    font-family: "Outfit";
-    overflow-x: hidden;
-    max-width: 100%;
+body {
+  font-family: "Outfit";
+  overflow-x: hidden;
+  max-width: 100%;
 }
-nav 
-{
-    position: fixed;
-    height: 68px;
+nav {
+  position: fixed;
+  height: 68px;
 }
 
-#nav-logo
-{
-    height: 67px;
-    width: 166px;
-
+#nav-logo {
+  height: 67px;
+  width: 166px;
 }
 
-#navbarNav
-{
-    font-size: 16px;
+#navbarNav {
+  font-size: 16px;
 }
 
-#navbarNav a:hover
-{
-    color:blue;
+#navbarNav a:hover {
+  color: blue;
 }
 
-
-.tituloCards
-{
-    font-size: 56px;
-    font-style: bold;
+.tituloCards {
+  font-size: 56px;
+  font-style: bold;
 }
 
 /*CSS CARROUSEL*/
 
 .bg-gray {
-    background-color: #f5f5f5;
-  }
-  
-  .bg-black {
-    background-color: #000;
-  }
-  
+  background-color: #f5f5f5;
+}
+
+.bg-black {
+  background-color: #000;
+}
+
+.carousel-content {
+  padding: 3rem 0;
+  height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.display-2 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+}
+
+.lead {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.nav-circle {
+  background-color: rgba(200, 200, 200, 0.8);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control-prev {
+  left: 1%;
+}
+
+.carousel-control-next {
+  right: 1%;
+}
+
+.carousel-indicators {
+  bottom: 20px;
+}
+
+.carousel-indicators button {
+  width: 30px;
+  height: 4px;
+  border-radius: 2px;
+  margin: 0 4px;
+}
+
+.carousel-indicators button.active {
+  background-color: #0d6efd;
+}
+
+.carousel-item.bg-black .carousel-indicators button {
+  background-color: #fff;
+}
+
+.btn {
+  border-radius: 0;
+  border-width: 1px;
+  padding: 0.5rem 2rem;
+  font-weight: 500;
+}
+
+img {
+  max-height: 400px;
+  object-fit: contain;
+}
+
+@media (max-width: 991.98px) {
   .carousel-content {
-    padding: 3rem 0;
-    height: 600px;
-    display: flex;
-    align-items: center;
+    height: auto;
+    padding: 2rem 0;
   }
-  
+
   .display-2 {
-    font-size: 3.5rem;
-    line-height: 1.2;
+    font-size: 2.5rem;
   }
-  
-  .lead {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  
-  .nav-circle {
-    background-color: rgba(200, 200, 200, 0.8);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+}
 
-  .carousel-control-prev {
-    left: 1%;
-  }
-  
-  .carousel-control-next {
-    right: 1%;
-  }
-  
-  .carousel-indicators {
-    bottom: 20px;
-  }
-  
-  .carousel-indicators button {
-    width: 30px;
-    height: 4px;
-    border-radius: 2px;
-    margin: 0 4px;
-  }
-  
-  .carousel-indicators button.active {
-    background-color: #0d6efd;
-  }
-  
-  .carousel-item.bg-black .carousel-indicators button {
-    background-color: #fff;
-  }
-  
-
-  .btn {
-    border-radius: 0;
-    border-width: 1px;
-    padding: 0.5rem 2rem;
-    font-weight: 500;
-  }
-  
-  
-  img {
-    max-height: 400px;
-    object-fit: contain;
-  }
-  
-  @media (max-width: 991.98px) {
-    .carousel-content {
-      height: auto;
-      padding: 2rem 0;
-    }
-    
-    .display-2 {
-      font-size: 2.5rem;
-    }
-  }
-
-#retanguloCardsInfo{
+#retanguloCardsInfo {
   border: #000;
 }
 
-#footer{
-  background-color: #D9D9D9;
+#footer {
+  background-color: #d9d9d9;
 }
 
-#logo-footer{
-  width: 230px;
+#logo-footer {
+  width: 100%;
   height: 93px;
 }
 
-#text-footer{
+#text-footer {
   font-size: 16px;
 }
 
-#text-footer a:hover
-{
-    color:blue;
+#text-footer a:hover {
+  color: blue;
 }
 
-#footer-logo{
-  
+#footer-logo {
   height: 67px;
   width: 166px;
-}
-
-.footer{
-
-  background-color: #D9D9D9;
 }
 
 #retanguloCardsInfo:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transform: scale(1.05);
   transition: transform 0.3s ease;
-  
 }
 
 #retanguloCardsInfo {
@@ -177,7 +159,7 @@ nav
   outline: none;
   background-color: #555;
   color: white;
-  cursor: pointer; 
+  cursor: pointer;
   border-radius: 4px;
   opacity: 0;
   visibility: hidden;

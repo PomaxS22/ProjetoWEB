@@ -1,27 +1,26 @@
 const API_URL = 'https://restcountries.com/v3.1/all';
 
 // Formata a "currency" para aparecer corretamente
-function formatarMoedas(currencies) {
+function formatMoedas(currencies) {
     if (!currencies) return "N/A";
     return Object.values(currencies)
       .map((currency) => `${currency.name}`)
-      .join(", ");
   }
   
 
 // Obtém a lista de países favoritos do localStorage se estiver vazio retorna um array vazio
-function obterFavoritos() {
+function obterFav() {
     return JSON.parse(localStorage.getItem('favoriteCountries')) || [];
 }
 
 // Salva a lista de países favoritos no localStorage
-function salvarFavoritos(favorites) {
+function salvarFav(favorites) {
     localStorage.setItem('favoriteCountries', JSON.stringify(favorites));
 }
 
 // Adiciona ou remove um país da lista de favoritos
 function alternarFavorito(countryName) {
-    let favoritos = obterFavoritos();
+    let favoritos = obterFav();
     const index = favoritos.indexOf(countryName);
     
     if (index === -1) {
@@ -30,13 +29,13 @@ function alternarFavorito(countryName) {
         favoritos.splice(index, 1);
     }
     
-    salvarFavoritos(favoritos);
+    salvarFav(favoritos);
     exibirPaisesFavoritos(); // Atualiza a exibição após a alteração
 }
 
 // Funcao que mostra os paises
 function exibirPaisesFavoritos() {
-    const favoritos = obterFavoritos();
+    const favoritos = obterFav();
     const $listaFavoritos = $('#favoritesList');
     const $semFavoritos = $('#noFavorites');
     
@@ -78,7 +77,7 @@ function exibirPaisesFavoritos() {
                                     <strong>Continente:</strong> ${pais.region}<br>
                                     <strong>Sub-região:</strong> ${pais.subregion}<br>
                                     <strong>População:</strong> ${pais.population.toLocaleString()}<br>
-                                    <strong>Moeda:</strong> ${formatarMoedas(pais.currencies)}<br>
+                                    <strong>Moeda:</strong> ${formatMoedas(pais.currencies)}<br>
                                 </p>
                             </div>
                             <div class="card-footer bg-transparent border-0 d-flex justify-content-end">
@@ -94,8 +93,7 @@ function exibirPaisesFavoritos() {
             });
         },
         error: function(erro) {
-            console.error('Erro:', erro);
-            $listaFavoritos.html('<p class="text-center">Erro ao carregar países favoritos.</p>');
+            console.error('Algo está mal', erro);
         }
     });
 }
