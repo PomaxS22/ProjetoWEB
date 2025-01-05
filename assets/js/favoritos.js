@@ -98,10 +98,8 @@ function exibirPaisesFavoritos() {
     });
 }
 
-// Vai buscar o botao ao HTML
 let meuBotao = document.getElementById("myBtn");
 
-// Mostra o botao de scroll quando se desce 20px para baixo da parte superior da pagina 
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -109,6 +107,13 @@ function scrollFunction() {
     } else {
         meuBotao.classList.remove("visible");  
     }
+}
+
+function voltarAoTopo() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
 
 // Mostra os paises favoritos quando a pagina carrega
