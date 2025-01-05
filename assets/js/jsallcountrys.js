@@ -5,20 +5,32 @@ function formatMoedas(currencies) {
   if (!currencies) return "N/A";
   return Object.values(currencies)
     .map((currency) => `${currency.name}`)
+    .join(", ");  // Adiciona a junção das moedas com vírgula
 }
 
 // Le o local storage para ver o paises favoritos
 function obterFavoritos() {
-  return JSON.parse(localStorage.getItem("favoriteCountries")) || [];
+  try {  // Adiciona tratamento de erro
+    return JSON.parse(localStorage.getItem("favoriteCountries")) || [];
+  } catch (error) {
+    console.error("Erro ao ler favoritos:", error);
+    return [];
+  }
 }
 
 // Guarda os paises favoritos no local storage
 function salvarFavoritos(favoritos) {
-  localStorage.setItem("favoriteCountries", JSON.stringify(favoritos));
+  try {  // Adiciona tratamento de erro
+    localStorage.setItem("favoriteCountries", JSON.stringify(favoritos));
+  } catch (error) {
+    console.error("Erro ao salvar favoritos:", error);
+  }
 }
 
 // Adiciona ou remove um país da lista de favoritos
 function alternarFav(countryName) {
+  if (!countryName) return obterFavoritos();
+  
   let favoritos = obterFavoritos();
   const index = favoritos.indexOf(countryName);
 
@@ -30,6 +42,16 @@ function alternarFav(countryName) {
 
   salvarFavoritos(favoritos);
   return favoritos;
+}
+
+// Mostra apenas os países favoritos
+function exibirPaisesFavoritos() {
+  const favoritos = obterFavoritos();
+  const paisesFiltrados = todosPaises.filter((pais) =>
+    favoritos.includes(pais.name.common)
+  );
+  exibirPaises(paisesFiltrados);
+  mostrandoApenasFavoritos = true;
 }
 
 $(document).ready(function () {
@@ -58,8 +80,8 @@ $(document).ready(function () {
                     <h5 class="card-title text-center">${pais.name.common}</h5>
                     <p class="card-text">
                         <strong>Capital:</strong> ${pais.capital ? pais.capital[0] : "N/A"}<br>
-                        <strong>Continente:</strong> ${pais.region}<br>
-                        <strong>Sub-região:</strong> ${pais.subregion}<br>
+                        <strong>Continente:</strong> ${pais.region || "N/A"}<br>
+                        <strong>Sub-região:</strong> ${pais.subregion || "N/A"}<br>
                         <strong>População:</strong> ${pais.population.toLocaleString()}<br>
                         <strong>Moeda:</strong> ${formatMoedas(pais.currencies)}<br>
                     </p>
@@ -102,10 +124,13 @@ $(document).ready(function () {
           a.name.common.localeCompare(b.name.common)
         );
         exibirPaises(todosPaises);
-        $("#countryList");
+        $("#countryList").show();  // Corrige a operação de mostrar
       },
       error: function(erro) {
-        console.error("Algo está mal", erro);
+        console.error("Erro ao carregar países:", erro);
+        $("#countryList")
+          .html('<div class="alert alert-danger">Erro ao carregar países. Por favor, tente novamente mais tarde.</div>')
+          .show();
       },
     });
   }
@@ -113,11 +138,9 @@ $(document).ready(function () {
   // Barra de pesquisa para filtrar países
   $("#searchCountry").on("input", function () {
     const termoBusca = $(this).val().toLowerCase();
-    // Filtra países baseado no termo de busca
     let paisesFiltrados = todosPaises.filter((pais) =>
       pais.name.common.toLowerCase().includes(termoBusca)
     );
-
     exibirPaises(paisesFiltrados);
   });
 
@@ -128,7 +151,6 @@ $(document).ready(function () {
 // Vai buscar o botao ao HTML
 let meuBotao = document.getElementById("myBtn");
 
-// Mostra o botao de scroll quando se desce 20px para baixo da parte superior da pagina 
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -138,7 +160,9 @@ function scrollFunction() {
     }
 }
 
-// Mostra os paises favoritos quando a pagina carrega
-$(document).ready(function() {
-    exibirPaisesFavoritos();
-});
+function voltarAoTopo() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
