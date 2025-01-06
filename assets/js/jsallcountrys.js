@@ -159,7 +159,6 @@ function scrollFunction() {
         meuBotao.classList.remove("visible");  
     }
 }
-
 function voltarAoTopo() {
     window.scrollTo({
         top: 0,
