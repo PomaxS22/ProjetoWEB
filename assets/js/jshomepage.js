@@ -3,9 +3,10 @@ const API_URL = 'https://restcountries.com/v3.1/all';
 // Busca e exibe 3 países aleatórios na página inicial
 function obterPaisesAleatorios() {
     // Busca todos os países da API
-    fetch(API_URL)
-        .then(response => response.json())
-        .then(dados => {
+    $.ajax({
+        url: API_URL,
+        method: 'GET',
+        success: function(dados) {
             // Seleciona 3 países aleatoriamente
             const paisesAleatorios = dados.sort(() => Math.random() - 0.5).slice(0, 3);
             
@@ -32,8 +33,13 @@ function obterPaisesAleatorios() {
                     <a href="listapaises.html" class="btn btn-primary d-flex justify-content-center">Mais Informações</a>
                 `;
             });
-        })
-        .catch(erro => console.error('Algo está errado', erro));
+        },
+        error: function(erro) {
+            console.error('Algo está errado:', erro);
+        }
+    });
 }
 
-document.addEventListener('DOMContentLoaded', obterPaisesAleatorios);
+$(document).ready(function() {
+    obterPaisesAleatorios();
+});
